@@ -1,6 +1,6 @@
 *** Variables ***
 ${SCRIPT}                     ${CURDIR}/test.resc
-${UART}                       sysbus.usart2
+${UART}                       sysbus.usart3
 
 *** Keywords ***
 Load Script
@@ -8,11 +8,12 @@ Load Script
     Create Terminal Tester    ${UART}
 
 *** Test Cases ***
-Should Run Test Case
+Should Print Boot Banner
+    [Documentation]    Bare-metal STM32H563 firmware boots and prints its banner.
+    ...                This test PASSES with the STM32H5 peripheral models from
+    ...                nburek/renode-infrastructure@915-stm32h563_support.
+    ...                Fix for: github.com/renode/renode/issues/915
     Load Script
     Start Emulation
-    
-    Register Failing Uart String    ZEPHYR FATAL ERROR
 
-    Wait For Line On Uart       *** Booting Zephyr OS build 076b625f2144 ***
-    Wait For Line On Uart       Hello World! nucleo_h533re/stm32h533xx
+    Wait For Line On Uart     Welcome to STM32 world !    timeout=5

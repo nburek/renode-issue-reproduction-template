@@ -1,17 +1,14 @@
-# This is a sample RESC script.
-# Please change this file and test.robot to include all necessary steps to reproduce your issue.
-# Make this repository as self contained as possible.
-#
+:name: Nucleo H563ZI
+:description: Issue #915 fixed — bare-metal STM32H563 firmware boots correctly with H5 peripheral models.
 
-$name?="TestMachine"
-$repl?=@https://zephyr-dashboard.renode.io/zephyr_sim/076b625f21444c8ee7ada24bafa5fec55d67e6ab/44771a7b17efb5e2ebc5ace0ab959f913e3980f8/nucleo_h533re/hello_world/hello_world.repl
-$bin?=@https://zephyr-dashboard.renode.io/zephyr/076b625f21444c8ee7ada24bafa5fec55d67e6ab/nucleo_h533re/hello_world/hello_world.elf
+$name?="Nucleo H563ZI"
+$bin?=@basic_peripheral_test.elf
 
 using sysbus
 mach create $name
-machine LoadPlatformDescription $repl 
+machine LoadPlatformDescription @nucleo_h563zi.repl
 
-showAnalyzer usart2
+showAnalyzer usart3
 
 macro reset
 """

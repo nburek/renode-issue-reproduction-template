@@ -1,12 +1,12 @@
 :name: Nucleo H563ZI
-:description: Issue #915 fixed — bare-metal STM32H563 firmware boots correctly with H5 peripheral models.
+:description: Issue #915 — comprehensive STM32H563 bare-metal firmware tests
 
 $name?="Nucleo H563ZI"
-$bin?=@basic_peripheral_test.elf
+$bin?=@artifacts/basic_peripheral_test.elf
 
 using sysbus
 mach create $name
-machine LoadPlatformDescription @nucleo_h563zi.repl
+machine LoadPlatformDescription @platforms/boards/nucleo_h563zi.repl
 
 showAnalyzer usart3
 

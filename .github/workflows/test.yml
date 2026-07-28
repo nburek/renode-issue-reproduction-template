@@ -18,8 +18,8 @@ jobs:
             revision: master
             name: renode-latest
           - repository: 'https://github.com/nburek/renode'
-            revision: 915-stm32h563_support
-            name: renode-fix
+            revision: 915-stm32h563_support-patched_modules
+            name: renode-custom
     steps:
       - name: Clone repository
         uses: actions/checkout@v5
